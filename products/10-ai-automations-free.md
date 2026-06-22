@@ -1,6 +1,6 @@
 # 10 AI Automations You Can Set Up This Weekend
 
-**By ZeroClaw Labs** | Free Guide
+**By AI Entrepreneur Labs** | Free Guide
 
 ---
 
@@ -157,4 +157,4 @@ These 10 automations are just the beginning. If you're ready to go deeper:
 
 ---
 
-*Built with ❤️ by [ZeroClaw Labs](https://zeroclaw-labs.com) — AI that works for you.*
+*Built with ❤️ by [AI Entrepreneur Labs](https://vinitasher.github.io/ai-entrepreneur-labs/) — AI that works for you.*

@@ -1,8 +1,8 @@
-# ZeroClaw Labs — Business Plan
+# AI Entrepreneur Labs — Business Plan
 
 ## Overview
 
-ZeroClaw Labs sells practical AI digital products that save time and make money.
+AI Entrepreneur Labs sells practical AI digital products that save time and make money.
 No hype, no fluff — tested tools and blueprints for real results.
 
 ## Products

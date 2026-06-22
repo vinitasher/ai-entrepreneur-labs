@@ -1,7 +1,7 @@
 # The AI Prompt Engineering Bible
 ### Master the Art of Getting Exactly What You Need From AI
 
-**By ZeroClaw Labs** | $19.99
+**By AI Entrepreneur Labs** | $19.99
 
 ---
 
@@ -192,4 +192,4 @@ Most AI guides teach you *about* AI. This one teaches you to **use** AI. Every p
 
 ---
 
-*Built with ❤️ by [ZeroClaw Labs](https://zeroclaw-labs.com)*
+*Built with ❤️ by [AI Entrepreneur Labs](https://vinitasher.github.io/ai-entrepreneur-labs/)*

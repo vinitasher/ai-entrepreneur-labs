@@ -1,7 +1,7 @@
 # 50 Automations That Make Money With AI
 ### Complete Blueprints for Revenue-Generating Automations
 
-**By ZeroClaw Labs** | $29.99
+**By AI Entrepreneur Labs** | $29.99
 
 ---
 
@@ -319,4 +319,4 @@ For each automation, expected ROI assumes:
 
 ---
 
-*Built with ❤️ by [ZeroClaw Labs](https://zeroclaw-labs.com)*
+*Built with ❤️ by [AI Entrepreneur Labs](https://vinitasher.github.io/ai-entrepreneur-labs/)*

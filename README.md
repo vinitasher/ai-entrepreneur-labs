@@ -1,4 +1,4 @@
-# ZeroClaw Labs
+# AI Entrepreneur Labs
 
 Practical AI tools that save time and make money.
 
@@ -14,4 +14,4 @@ Visit [zeroclaw-labs.com](https://vinitasher.github.io/zeroclaw-labs/)
 
 ## About
 
-ZeroClaw Labs builds practical AI automation products. No hype, no fluff — tested tools and blueprints for real results.
+AI Entrepreneur Labs builds practical AI automation products. No hype, no fluff — tested tools and blueprints for real results.
