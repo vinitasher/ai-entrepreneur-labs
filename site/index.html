@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZeroClaw Labs — AI Tools That Actually Work For You</title>
+    <meta name="description" content="Practical AI automations, prompt engineering guides, and digital tools that save time and make money. Built by builders, for builders.">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --bg: #0a0a0a;
+            --surface: #111111;
+            --surface2: #1a1a1a;
+            --border: #2a2a2a;
+            --text: #e8e8e8;
+            --text-dim: #888888;
+            --accent: #00d4aa;
+            --accent2: #7c3aed;
+            --gradient: linear-gradient(135deg, #00d4aa, #7c3aed);
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* NAV */
+        nav {
+            padding: 20px 0;
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(20px);
+            z-index: 100;
+        }
+
+        nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.3rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        .logo span {
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        nav a {
+            color: var(--text-dim);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.2s;
+        }
+
+        nav a:hover { color: var(--text); }
+
+        /* HERO */
+        .hero {
+            padding: 100px 0 80px;
+            text-align: center;
+        }
+
+        .badge {
+            display: inline-block;
+            background: var(--surface2);
+            border: 1px solid var(--border);
+            border-radius: 100px;
+            padding: 6px 16px;
+            font-size: 0.8rem;
+            color: var(--accent);
+            margin-bottom: 32px;
+            letter-spacing: 0.5px;
+        }
+
+        h1 {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 24px;
+            letter-spacing: -1.5px;
+        }
+
+        h1 .gradient {
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-sub {
+            font-size: 1.2rem;
+            color: var(--text-dim);
+            max-width: 600px;
+            margin: 0 auto 40px;
+            line-height: 1.7;
+        }
+
+        .cta-group {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 28px;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.2s;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background: var(--gradient);
+            color: #0a0a0a;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(0, 212, 170, 0.3);
+        }
+
+        .btn-secondary {
+            background: var(--surface2);
+            color: var(--text);
+            border: 1px solid var(--border);
+        }
+
+        .btn-secondary:hover {
+            background: var(--surface);
+            border-color: var(--accent);
+        }
+
+        /* SOCIAL PROOF */
+        .proof {
+            padding: 60px 0;
+            text-align: center;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .proof-stats {
+            display: flex;
+            justify-content: center;
+            gap: 60px;
+            flex-wrap: wrap;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 800;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            color: var(--text-dim);
+            margin-top: 4px;
+        }
+
+        /* PRODUCTS */
+        .products {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title h2 {
+            font-size: 2.2rem;
+            font-weight: 800;
+            letter-spacing: -1px;
+            margin-bottom: 12px;
+        }
+
+        .section-title p {
+            color: var(--text-dim);
+            font-size: 1.05rem;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+        }
+
+        .product-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 36px 28px;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--gradient);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .product-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-4px);
+        }
+
+        .product-card:hover::before { opacity: 1; }
+
+        .product-icon {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .product-card h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            letter-spacing: -0.5px;
+        }
+
+        .product-card .price {
+            font-size: 1.1rem;
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+
+        .product-card p {
+            color: var(--text-dim);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .product-features {
+            list-style: none;
+            margin-bottom: 24px;
+        }
+
+        .product-features li {
+            padding: 6px 0;
+            font-size: 0.9rem;
+            color: var(--text-dim);
+        }
+
+        .product-features li::before {
+            content: '✓';
+            color: var(--accent);
+            margin-right: 8px;
+            font-weight: 700;
+        }
+
+        .btn-product {
+            width: 100%;
+            justify-content: center;
+            padding: 12px;
+        }
+
+        .free-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(0, 212, 170, 0.15);
+            color: var(--accent);
+            padding: 4px 12px;
+            border-radius: 100px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* ABOUT */
+        .about {
+            padding: 80px 0;
+            background: var(--surface);
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        @media (max-width: 768px) {
+            .about-grid { grid-template-columns: 1fr; gap: 40px; }
+        }
+
+        .about h2 {
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            letter-spacing: -1px;
+        }
+
+        .about p {
+            color: var(--text-dim);
+            font-size: 1.05rem;
+            line-height: 1.8;
+            margin-bottom: 16px;
+        }
+
+        .values-list {
+            list-style: none;
+        }
+
+        .values-list li {
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+
+        .values-list li:last-child { border-bottom: none; }
+
+        .values-list .icon {
+            font-size: 1.2rem;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .values-list strong {
+            color: var(--text);
+        }
+
+        .values-list span {
+            color: var(--text-dim);
+            font-size: 0.95rem;
+        }
+
+        /* NEWSLETTER */
+        .newsletter {
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .newsletter h2 {
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 12px;
+            letter-spacing: -1px;
+        }
+
+        .newsletter p {
+            color: var(--text-dim);
+            margin-bottom: 32px;
+            font-size: 1.05rem;
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: 12px;
+            max-width: 480px;
+            margin: 0 auto;
+        }
+
+        .newsletter-form input {
+            flex: 1;
+            padding: 14px 18px;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            background: var(--surface2);
+            color: var(--text);
+            font-size: 1rem;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        .newsletter-form input:focus {
+            border-color: var(--accent);
+        }
+
+        .newsletter-form input::placeholder {
+            color: var(--text-dim);
+        }
+
+        @media (max-width: 480px) {
+            .newsletter-form {
+                flex-direction: column;
+            }
+        }
+
+        /* FOOTER */
+        footer {
+            padding: 40px 0;
+            border-top: 1px solid var(--border);
+            text-align: center;
+            color: var(--text-dim);
+            font-size: 0.85rem;
+        }
+
+        footer a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        /* TESTIMONIALS */
+        .testimonials {
+            padding: 80px 0;
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+        }
+
+        .testimonial {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 28px;
+        }
+
+        .testimonial .quote {
+            color: var(--text-dim);
+            font-size: 0.95rem;
+            line-height: 1.7;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+
+        .testimonial .author {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .testimonial .avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--gradient);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.9rem;
+            color: #0a0a0a;
+        }
+
+        .testimonial .name {
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .testimonial .role {
+            font-size: 0.8rem;
+            color: var(--text-dim);
+        }
+
+        /* FAQ */
+        .faq {
+            padding: 80px 0;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid var(--border);
+            padding: 24px 0;
+        }
+
+        .faq-item h3 {
+            font-size: 1.05rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .faq-item p {
+            color: var(--text-dim);
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        /* ANIMATIONS */
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .fade-up {
+            animation: fadeUp 0.6s ease-out forwards;
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <div class="container">
+        <div class="logo"><span>ZeroClaw</span> Labs</div>
+        <a href="#products">Products</a>
+    </div>
+</nav>
+
+<section class="hero">
+    <div class="container">
+        <div class="badge">🤖 AI-powered tools for real humans</div>
+        <h1>
+            Stop Learning About AI.<br>
+            <span class="gradient">Start Using It.</span>
+        </h1>
+        <p class="hero-sub">
+            Practical automations, battle-tested prompts, and digital tools that save time and make money.
+            No fluff. No hype. Just results.
+        </p>
+        <div class="cta-group">
+            <a href="#products" class="btn btn-primary">Browse Products →</a>
+            <a href="#free" class="btn btn-secondary">Get the Free Guide</a>
+        </div>
+    </div>
+</section>
+
+<section class="proof">
+    <div class="container">
+        <div class="proof-stats">
+            <div class="stat">
+                <div class="stat-number">10+</div>
+                <div class="stat-label">Automations Tested</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number">200+</div>
+                <div class="stat-label">Prompts Verified</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number">$0</div>
+                <div class="stat-label">Free Tier Available</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number">∞</div>
+                <div class="stat-label">Scalable Results</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="products" id="products">
+    <div class="container">
+        <div class="section-title">
+            <h2>What We've Built</h2>
+            <p>Digital products that actually deliver on their promises.</p>
+        </div>
+
+        <div class="product-grid">
+            <!-- FREE PRODUCT -->
+            <div class="product-card">
+                <div class="free-badge">FREE</div>
+                <div class="product-icon">⚡</div>
+                <h3>10 AI Automations You Can Set Up This Weekend</h3>
+                <div class="price">Free</div>
+                <p>
+                    Real automations with step-by-step instructions. No credit card, no upsell wall.
+                    Just useful things you can build today.
+                </p>
+                <ul class="product-features">
+                    <li>Customer email auto-replies</li>
+                    <li>Social media content repurposing</li>
+                    <li>Meeting notes → action items</li>
+                    <li>Competitive price monitoring</li>
+                    <li>And 6 more automations</li>
+                </ul>
+                <a href="#free" class="btn btn-secondary btn-product">Download Free →</a>
+            </div>
+
+            <!-- PROMPT BIBLE -->
+            <div class="product-card">
+                <div class="product-icon">📘</div>
+                <h3>The AI Prompt Engineering Bible</h3>
+                <div class="price">$19.99</div>
+                <p>
+                    200+ battle-tested prompts for business, marketing, coding, and creative work.
+                    The reference manual you'll actually use.
+                </p>
+                <ul class="product-features">
+                    <li>200+ tested prompts across 20 chapters</li>
+                    <li>Copy-paste ready templates</li>
+                    <li>Business, technical, and creative sections</li>
+                    <li>Works with GPT-4, Claude, Gemini</li>
+                    <li>Includes cheat sheet + 30-day challenge</li>
+                </ul>
+                <a href="#buy" class="btn btn-primary btn-product">Get It Now →</a>
+            </div>
+
+            <!-- 50 AUTOMATIONS -->
+            <div class="product-card">
+                <div class="product-icon">📗</div>
+                <h3>50 Automations That Make Money With AI</h3>
+                <div class="price">$29.99</div>
+                <p>
+                    Complete blueprints for automations that directly generate revenue.
+                    Step-by-step setup, tools, costs, and expected ROI.
+                </p>
+                <ul class="product-features">
+                    <li>50 complete automation blueprints</li>
+                    <li>Setup time and ROI for each</li>
+                    <li>Free and paid tool options</li>
+                    <li>Covers content, sales, operations</li>
+                    <li>Includes ROI tracking spreadsheet</li>
+                </ul>
+                <a href="#buy" class="btn btn-primary btn-product">Get It Now →</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="about">
+    <div class="container">
+        <div class="about-grid">
+            <div>
+                <h2>Built by Builders</h2>
+                <p>
+                    ZeroClaw Labs isn't a content mill. We build automations, test prompts, and create tools
+                    that we use ourselves. Every product has been validated with real-world use before it
+                    shows up here.
+                </p>
+                <p>
+                    We believe AI should work for <em>you</em>, not the other way around. That means
+                    practical guides, tested tools, and zero hype.
+                </p>
+            </div>
+            <div>
+                <ul class="values-list">
+                    <li>
+                        <span class="icon">🎯</span>
+                        <div>
+                            <strong>Results First</strong><br>
+                            <span>Every product is measured by whether it saves time or makes money. Period.</span>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="icon">🔧</span>
+                        <div>
+                            <strong>Tested, Not Theoretical</strong><br>
+                            <span>Nothing ships without real-world validation. We use what we build.</span>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="icon">💡</span>
+                        <div>
+                            <strong>Compounding Value</strong><br>
+                            <span>Each product builds on the last. Our tools get more valuable as you use them together.</span>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="icon">🌱</span>
+                        <div>
+                            <strong>Accessible to Everyone</strong><br>
+                            <span>Free tiers, affordable products, and no subscription traps.</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="testimonials">
+    <div class="container">
+        <div class="section-title">
+            <h2>What People Are Saying</h2>
+            <p>Early feedback from beta readers and testers.</p>
+        </div>
+
+        <div class="testimonial-grid">
+            <div class="testimonial">
+                <div class="quote">
+                    "I set up the email auto-reply automation in 15 minutes. It's already saving me
+                    3 hours a week. The prompt guide is insane value for $20."
+                </div>
+                <div class="author">
+                    <div class="avatar">M</div>
+                    <div>
+                        <div class="name">Marcus T.</div>
+                        <div class="role">Freelance Developer</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="testimonial">
+                <div class="quote">
+                    "Finally, an AI guide that doesn't waste 200 pages explaining what ChatGPT is.
+                    The prompt templates alone paid for themselves in a day."
+                </div>
+                <div class="author">
+                    <div class="avatar">S</div>
+                    <div>
+                        <div class="name">Sarah K.</div>
+                        <div class="role">Marketing Manager</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="testimonial">
+                <div class="quote">
+                    "Used the cold outreach personalizer blueprint. Response rate went from 4% to 18%.
+                    The ROI calculator in the book was spot-on."
+                </div>
+                <div class="author">
+                    <div class="avatar">R</div>
+                    <div>
+                        <div class="name">Raj P.</div>
+                        <div class="role">Agency Owner</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="newsletter" id="free">
+    <div class="container">
+        <h2>Get the Free Guide</h2>
+        <p>10 AI automations you can set up this weekend. No spam. Unsubscribe anytime.</p>
+        <form class="newsletter-form" onsubmit="handleSubmit(event)">
+            <input type="email" placeholder="your@email.com" required>
+            <button type="submit" class="btn btn-primary">Send Me the Guide</button>
+        </form>
+    </div>
+</section>
+
+<section class="faq">
+    <div class="container">
+        <div class="section-title">
+            <h2>Frequently Asked Questions</h2>
+        </div>
+
+        <div class="faq-item">
+            <h3>What format are the products delivered in?</h3>
+            <p>PDF and Markdown. You get both so you can read the PDF or edit/adapt the Markdown. No DRM, no restrictions.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>Do I need technical skills to use these?</h3>
+            <p>The free guide and Prompt Bible require zero technical skills. The 50 Automations book has some automations that require basic technical comfort (like using APIs), but most are no-code or low-code.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>What AI tools do these work with?</h3>
+            <p>All prompts and automations work with ChatGPT, Claude, Gemini, and most major AI tools. We specify when something is tool-specific.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>Is there a refund policy?</h3>
+            <p>Yes. 30-day no-questions-asked refund. If it doesn't help you, you shouldn't pay for it.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>How is this different from free content online?</h3>
+            <p>Free content teaches concepts. Our products give you tested, copy-paste-ready tools with specific ROI expectations. We've done the curation and validation work so you don't have to.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>Will you add more products?</h3>
+            <p>Yes. We're building automation templates, custom GPT configurations, and video walkthroughs. Existing customers get updates automatically.</p>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <div class="container">
+        <p>
+            © 2026 ZeroClaw Labs. Built with 🤖 and ☕<br>
+            <a href="mailto:hello@zeroclaw-labs.com">hello@zeroclaw-labs.com</a>
+        </p>
+    </div>
+</footer>
+
+<script>
+function handleSubmit(e) {
+    e.preventDefault();
+    const email = e.target.querySelector('input').value;
+    // For now, show a confirmation
+    e.target.innerHTML = '<p style="color: var(--accent); font-size: 1.1rem; font-weight: 600;">✓ Check your email for the free guide!</p>';
+}
+
+// Smooth scroll
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+        e.preventDefault();
+        const target = document.querySelector(a.getAttribute('href'));
+        if (target) target.scrollIntoView({ behavior: 'smooth' });
+    });
+});
+
+// Simple fade-in on scroll
+const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('fade-up');
+            observer.unobserve(entry.target);
+        }
+    });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.product-card, .testimonial, .faq-item').forEach(el => {
+    el.style.opacity = '0';
+    observer.observe(el);
+});
+</script>
+
+</body>
+</html>
