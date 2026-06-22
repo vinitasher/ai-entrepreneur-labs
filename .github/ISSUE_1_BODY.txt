@@ -1,0 +1,20 @@
+## This business cannot transact. Period.
+
+Every "Get It Now" button on the landing page links to `#buy`, which doesn't exist on the page. There is no anchor, no modal, no redirect — nothing happens. A visitor who clicks to purchase gets silently scrolled to nothing.
+
+**What actually exists:**
+- A `BUSINESS-PLAN.md` that references Gumroad as the delivery mechanism
+- Zero Gumroad account configured
+- Zero payment processing of any kind
+- No product delivery emails, no download links, no fulfillment pipeline
+- The free guide's email capture form replaces itself with `"✓ Check your email for the free guide!"` but stores no emails and sends nothing — there is no email service connected
+
+**What this means:**
+- 100% of paying traffic is wasted the instant someone clicks "Get It Now"
+- The business has zero path to revenue despite being a revenue-generating product business
+- The BUSINESS-PLAN.md projects $50-150 in Month 1 from 500 visitors at 1% conversion — this is fiction. There is no conversion path.
+- Even the free guide funnel is broken: users give their email, see a fake success message, and receive nothing. This is deceptive UX.
+
+**Fix:** This needs Gumroad (or Lemon Squeezy, Stripe Checkout, etc.) integration with actual product listings, checkout links, and automated delivery. The email form needs a real backend (Mailchimp, ConvertKit, Buttondown, or even a simple webhook to a Google Sheet). Nothing else on this site matters until this is resolved.
+
+**Why this is #1:** You can have the world's best copy, design, and SEO — if the cash register doesn't open, you don't have a business. You have a portfolio piece.

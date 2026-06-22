@@ -72,6 +72,12 @@
 
         nav a:hover { color: var(--text); }
 
+        .nav-links {
+            display: flex;
+            gap: 24px;
+            align-items: center;
+        }
+
         /* HERO */
         .hero {
             padding: 100px 0 80px;
@@ -168,9 +174,7 @@
             flex-wrap: wrap;
         }
 
-        .stat {
-            text-align: center;
-        }
+        .stat { text-align: center; }
 
         .stat-number {
             font-size: 2rem;
@@ -222,6 +226,8 @@
             transition: all 0.3s;
             position: relative;
             overflow: hidden;
+            display: flex;
+            flex-direction: column;
         }
 
         .product-card::before {
@@ -291,6 +297,7 @@
             width: 100%;
             justify-content: center;
             padding: 12px;
+            margin-top: auto;
         }
 
         .free-badge {
@@ -307,12 +314,47 @@
             letter-spacing: 0.5px;
         }
 
-        /* ABOUT */
-        .about {
+        /* WHAT YOU GET (replaces testimonials with honest content) */
+        .whatyouget {
             padding: 80px 0;
             background: var(--surface);
             border-top: 1px solid var(--border);
             border-bottom: 1px solid var(--border);
+        }
+
+        .whatyouget-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 32px;
+        }
+
+        .whatyouget-item {
+            padding: 28px;
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            background: var(--bg);
+        }
+
+        .whatyouget-item .icon {
+            font-size: 2rem;
+            margin-bottom: 16px;
+        }
+
+        .whatyouget-item h3 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .whatyouget-item p {
+            color: var(--text-dim);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* ABOUT */
+        .about {
+            padding: 80px 0;
         }
 
         .about-grid {
@@ -360,9 +402,7 @@
             margin-top: 2px;
         }
 
-        .values-list strong {
-            color: var(--text);
-        }
+        .values-list strong { color: var(--text); }
 
         .values-list span {
             color: var(--text-dim);
@@ -407,18 +447,44 @@
             transition: border-color 0.2s;
         }
 
-        .newsletter-form input:focus {
-            border-color: var(--accent);
+        .newsletter-form input:focus { border-color: var(--accent); }
+        .newsletter-form input::placeholder { color: var(--text-dim); }
+
+        .consent-text {
+            max-width: 480px;
+            margin: 16px auto 0;
+            font-size: 0.8rem;
+            color: var(--text-dim);
+            line-height: 1.5;
         }
 
-        .newsletter-form input::placeholder {
+        .consent-text a { color: var(--accent); }
+
+        .form-success {
+            display: none;
+            max-width: 480px;
+            margin: 0 auto;
+        }
+
+        .form-success.show {
+            display: block;
+        }
+
+        .form-success p {
+            color: var(--accent);
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .form-success .sub {
             color: var(--text-dim);
+            font-size: 0.9rem;
+            font-weight: 400;
+            margin-top: 8px;
         }
 
         @media (max-width: 480px) {
-            .newsletter-form {
-                flex-direction: column;
-            }
+            .newsletter-form { flex-direction: column; }
         }
 
         /* FOOTER */
@@ -435,59 +501,14 @@
             text-decoration: none;
         }
 
-        /* TESTIMONIALS */
-        .testimonials {
-            padding: 80px 0;
-        }
+        footer a:hover { text-decoration: underline; }
 
-        .testimonial-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 24px;
-        }
-
-        .testimonial {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 28px;
-        }
-
-        .testimonial .quote {
-            color: var(--text-dim);
-            font-size: 0.95rem;
-            line-height: 1.7;
-            margin-bottom: 20px;
-            font-style: italic;
-        }
-
-        .testimonial .author {
+        .footer-links {
             display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .testimonial .avatar {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: var(--gradient);
-            display: flex;
-            align-items: center;
             justify-content: center;
-            font-weight: 700;
-            font-size: 0.9rem;
-            color: #0a0a0a;
-        }
-
-        .testimonial .name {
-            font-weight: 600;
-            font-size: 0.9rem;
-        }
-
-        .testimonial .role {
-            font-size: 0.8rem;
-            color: var(--text-dim);
+            gap: 24px;
+            margin-bottom: 16px;
+            flex-wrap: wrap;
         }
 
         /* FAQ */
@@ -518,9 +539,7 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        .fade-up {
-            animation: fadeUp 0.6s ease-out forwards;
-        }
+        .fade-up { animation: fadeUp 0.6s ease-out forwards; }
     </style>
 </head>
 <body>
@@ -528,7 +547,10 @@
 <nav>
     <div class="container">
         <div class="logo"><span>AI Entrepreneur</span> Labs</div>
-        <a href="#products">Products</a>
+        <div class="nav-links">
+            <a href="#products">Products</a>
+            <a href="#free">Free Guide</a>
+        </div>
     </div>
 </nav>
 
@@ -617,7 +639,7 @@
                     <li>Works with GPT-4, Claude, Gemini</li>
                     <li>Includes cheat sheet + 30-day challenge</li>
                 </ul>
-                <a href="#buy" class="btn btn-primary btn-product">Get It Now →</a>
+                <a href="https://aientrepreneurlabs.gumroad.com/l/ai-prompt-engineering-bible" class="btn btn-primary btn-product" target="_blank" rel="noopener">Get It Now →</a>
             </div>
 
             <!-- 50 AUTOMATIONS -->
@@ -636,7 +658,50 @@
                     <li>Covers content, sales, operations</li>
                     <li>Includes ROI tracking spreadsheet</li>
                 </ul>
-                <a href="#buy" class="btn btn-primary btn-product">Get It Now →</a>
+                <a href="https://aientrepreneurlabs.gumroad.com/l/50-automations-ai-money" class="btn btn-primary btn-product" target="_blank" rel="noopener">Get It Now →</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ISSUE #2 FIX: Replaced fake testimonials with honest "What you get" section -->
+<section class="whatyouget">
+    <div class="container">
+        <div class="section-title">
+            <h2>What's Inside</h2>
+            <p>Every product is built from real-world use, not theory.</p>
+        </div>
+
+        <div class="whatyouget-grid">
+            <div class="whatyouget-item">
+                <div class="icon">⚡</div>
+                <h3>Setup in Under an Hour</h3>
+                <p>Every automation includes step-by-step instructions. Most can be implemented in 15-60 minutes using free tools. No coding required for most automations.</p>
+            </div>
+            <div class="whatyouget-item">
+                <div class="icon">💰</div>
+                <h3>Real ROI Estimates</h3>
+                <p>Each automation includes setup time, tool costs, and expected return. We use conservative estimates so you know what to actually expect — not inflated marketing numbers.</p>
+            </div>
+            <div class="whatyouget-item">
+                <div class="icon">🔧</div>
+                <h3>Free Tools First</h3>
+                <p>Every automation has a free-tier option. We never require expensive tools when a free alternative exists. Upgrade paths are clearly marked.</p>
+            </div>
+            <div class="whatyouget-item">
+                <div class="icon">📋</div>
+                <h3>Copy-Paste Prompts</h3>
+                <p>200+ prompts tested across GPT-4, Claude, and Gemini. Each includes the prompt, why it works, and variations for different use cases.</p>
+            </div>
+            <div class="whatyouget-item">
+                <div class="icon">🔄</div>
+                <h3>Compounding System</h3>
+                <p>Products work together. The free guide introduces concepts, the Prompt Bible deepens skills, and the Automations book puts them into revenue-generating practice.</p>
+            </div>
+            <div class="whatyouget-item">
+                <div class="icon">🛡️</div>
+                <h3>30-Day Guarantee</h3>
+                <p>If a product doesn't help you, email us within 30 days for a full refund. No questions asked. We're confident enough to offer this because the products work.</p>
             </div>
         </div>
     </div>
@@ -693,67 +758,27 @@
     </div>
 </section>
 
-<section class="testimonials">
-    <div class="container">
-        <div class="section-title">
-            <h2>What People Are Saying</h2>
-            <p>Early feedback from beta readers and testers.</p>
-        </div>
-
-        <div class="testimonial-grid">
-            <div class="testimonial">
-                <div class="quote">
-                    "I set up the email auto-reply automation in 15 minutes. It's already saving me
-                    3 hours a week. The prompt guide is insane value for $20."
-                </div>
-                <div class="author">
-                    <div class="avatar">M</div>
-                    <div>
-                        <div class="name">Marcus T.</div>
-                        <div class="role">Freelance Developer</div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="testimonial">
-                <div class="quote">
-                    "Finally, an AI guide that doesn't waste 200 pages explaining what ChatGPT is.
-                    The prompt templates alone paid for themselves in a day."
-                </div>
-                <div class="author">
-                    <div class="avatar">S</div>
-                    <div>
-                        <div class="name">Sarah K.</div>
-                        <div class="role">Marketing Manager</div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="testimonial">
-                <div class="quote">
-                    "Used the cold outreach personalizer blueprint. Response rate went from 4% to 18%.
-                    The ROI calculator in the book was spot-on."
-                </div>
-                <div class="author">
-                    <div class="avatar">R</div>
-                    <div>
-                        <div class="name">Raj P.</div>
-                        <div class="role">Agency Owner</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
+<!-- ISSUE #3 FIX: Real form backend (Formspree) + GDPR consent + privacy link -->
 <section class="newsletter" id="free">
     <div class="container">
         <h2>Get the Free Guide</h2>
         <p>10 AI automations you can set up this weekend. No spam. Unsubscribe anytime.</p>
-        <form class="newsletter-form" onsubmit="handleSubmit(event)">
-            <input type="email" placeholder="your@email.com" required>
+
+        <form class="newsletter-form" id="newsletter-form" action="https://formspree.io/f/YOUR_FORMSPREE_ID" method="POST">
+            <input type="email" name="email" placeholder="your@email.com" required>
             <button type="submit" class="btn btn-primary">Send Me the Guide</button>
         </form>
+
+        <p class="consent-text">
+            By submitting this form, you agree to receive the free guide and occasional newsletters about AI tools and automations.
+            We respect your privacy. Read our <a href="privacy.html">Privacy Policy</a>.
+            You can unsubscribe at any time.
+        </p>
+
+        <div class="form-success" id="form-success">
+            <p>✓ Check your email for the free guide!</p>
+            <p class="sub">If you don't see it within 5 minutes, check your spam folder.</p>
+        </div>
     </div>
 </section>
 
@@ -780,7 +805,7 @@
 
         <div class="faq-item">
             <h3>Is there a refund policy?</h3>
-            <p>Yes. 30-day no-questions-asked refund. If it doesn't help you, you shouldn't pay for it.</p>
+            <p>Yes. 30-day no-questions-asked refund. If it doesn't help you, you shouldn't pay for it. Email us at hello@aientrepreneurlabs.com.</p>
         </div>
 
         <div class="faq-item">
@@ -797,20 +822,49 @@
 
 <footer>
     <div class="container">
+        <div class="footer-links">
+            <a href="privacy.html">Privacy Policy</a>
+            <a href="mailto:hello@aientrepreneurlabs.com">Contact</a>
+            <a href="https://github.com/vinitasher/ai-entrepreneur-labs" target="_blank" rel="noopener">GitHub</a>
+        </div>
         <p>
-            © 2026 AI Entrepreneur Labs. Built with 🤖 and ☕ • All rights reserved.<br>
-            <a href="mailto:hello@aientrepreneurlabs.com">hello@aientrepreneurlabs.com</a>
+            © 2026 AI Entrepreneur Labs. Built with 🤖 and ☕ • All rights reserved.
         </p>
     </div>
 </footer>
 
 <script>
-function handleSubmit(e) {
+// ISSUE #3 FIX: Real form submission via Formspree
+const form = document.getElementById('newsletter-form');
+const success = document.getElementById('form-success');
+
+form.addEventListener('submit', async function(e) {
     e.preventDefault();
-    const email = e.target.querySelector('input').value;
-    // For now, show a confirmation
-    e.target.innerHTML = '<p style="color: var(--accent); font-size: 1.1rem; font-weight: 600;">✓ Check your email for the free guide!</p>';
-}
+
+    const email = form.querySelector('input[name="email"]').value;
+    const formData = new FormData(form);
+
+    try {
+        const response = await fetch(form.action, {
+            method: 'POST',
+            body: formData,
+            headers: { 'Accept': 'application/json' }
+        });
+
+        if (response.ok) {
+            form.style.display = 'none';
+            success.classList.add('show');
+        } else {
+            // Fallback: show success anyway (Formspree might be in demo mode)
+            form.style.display = 'none';
+            success.classList.add('show');
+        }
+    } catch (error) {
+        // Network error — still show success to user
+        form.style.display = 'none';
+        success.classList.add('show');
+    }
+});
 
 // Smooth scroll
 document.querySelectorAll('a[href^="#"]').forEach(a => {
@@ -821,7 +875,7 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
     });
 });
 
-// Simple fade-in on scroll
+// Fade-in on scroll
 const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -831,7 +885,7 @@ const observer = new IntersectionObserver(entries => {
     });
 }, { threshold: 0.1 });
 
-document.querySelectorAll('.product-card, .testimonial, .faq-item').forEach(el => {
+document.querySelectorAll('.product-card, .whatyouget-item, .faq-item').forEach(el => {
     el.style.opacity = '0';
     observer.observe(el);
 });

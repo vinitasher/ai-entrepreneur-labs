@@ -1,0 +1,24 @@
+## Three fake people are recommending products they never bought.
+
+The testimonials section features:
+- **"Marcus T."** — Freelance Developer, claims to save 3 hours/week with the email automation
+- **"Sarah K."** — Marketing Manager, claims prompt templates "paid for themselves in a day"
+- **"Raj P."** — Agency Owner, claims response rate went from 4% to 18% using the cold outreach blueprint
+
+**None of these people exist.** No real customers exist. The business has zero sales and zero users. These are fabricated endorsements.
+
+**Legal exposure:**
+- **FTC Act §5** prohibits deceptive endorsements. Using fabricated testimonials to sell products is a clear violation. The FTC has pursued enforcement actions against exactly this pattern — fake reviews to drive purchases.
+- If any customer later discovers these are fake (trivially easy: Google the names, ask for verification), the resulting exposure could generate a complaint to the FTC, state AG, or a class action under consumer protection statutes.
+- The FTC's updated Endorsement Guides (2023) specifically address fake reviews and impose liability on the business, not just the endorser.
+
+**Trust destruction:**
+- Savvy buyers in the AI/tech space will Google these names and find nothing. That moment — when a potential customer realizes the testimonials are fake — permanently destroys credibility for that visitor AND anyone they tell.
+- The section header says "Early feedback from beta readers and testers" which further implies real people. There are no beta readers. There are no testers.
+
+**Fix:** Remove all fabricated testimonials immediately. Replace with:
+1. Beta test the products with 5-10 real users first, collect genuine feedback
+2. Or remove the section entirely until real customers exist
+3. If you must have social proof before launch, use honest framing: "What beta readers said" with verified checkmarks, or simply omit the section
+
+**This is not a cosmetic issue.** Fake testimonials on a site that collects email addresses and attempts to sell products is a legal and ethical liability that can end the business.

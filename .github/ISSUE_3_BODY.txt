@@ -1,0 +1,27 @@
+## The form collects nothing, delivers nothing, and lies about doing both.
+
+The email capture form at `#free` (line 753-756) does the following:
+1. Presents as a legitimate newsletter/guide signup
+2. Asks for the user's email address (personal data)
+3. On submission, JavaScript replaces the form with: `"✓ Check your email for the free guide!"`
+4. **The email is never stored anywhere.** No API call, no form backend, no webhook, no localStorage, nothing.
+5. **No guide is ever sent.** There is no email service configured.
+
+**What's broken:**
+- **No form backend:** The `handleSubmit` function (line 808-813) only does `e.preventDefault()` and replaces innerHTML. The email variable is assigned but never used.
+- **No email delivery:** There is no SMTP, no Mailchimp/ConvertKit API, no webhook. Users will never receive the guide.
+- **False confirmation:** The success message is a lie. The user believes they signed up. They didn't.
+
+**Privacy and legal concerns:**
+- **No privacy policy:** The site collects email addresses (personal data under GDPR, CCPA, PIPEDA) but has no privacy policy, no cookie notice, no data processing disclosure.
+- **No consent mechanism:** GDPR requires explicit consent for data collection. A form that appears to collect data but doesn't could still create confusion about what happened with the submitted email.
+- **CCPA implications:** California residents have the right to know what data is collected. There is nothing to disclose because nothing is collected — but the site implies otherwise.
+
+**Fix (priority order):**
+1. Connect to a real email service (Buttondown free tier, Mailchimp, ConvertKit, or even a Google Form webhook)
+2. Add a privacy policy page explaining what data is collected and how it's used
+3. Add proper GDPR consent language to the form
+4. Actually deliver the free guide as promised (email the PDF/markdown)
+5. Add a footer link to Privacy Policy and Terms of Service
+
+**Why this is top 3:** The email funnel is the foundation of the entire marketing strategy described in BUSINESS-PLAN.md. Every other growth lever (SEO → free guide → nurture → paid products) depends on this form working. It doesn't. And its deceptive behavior (fake success message) actively damages user trust for every visitor who tries it.
